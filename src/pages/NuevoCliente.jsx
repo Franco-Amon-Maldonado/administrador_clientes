@@ -1,12 +1,14 @@
 
-import { useNavigate, Form, useActionData } from "react-router-dom";
+import { useNavigate, Form, useActionData, redirect } from "react-router-dom";
 import Formulario from "../components/Formulario";
 import Mensaje from "../components/Mensaje";
+import { agregarCLiente } from "../data/clientes";
+import Swal from "sweetalert2";
 
 
 export async function action({request}){
+    
     const formData = await request.formData()
-
     const datos = Object.fromEntries(formData)
     
     //Validacion 
@@ -16,7 +18,7 @@ export async function action({request}){
     }
 
     //validar email
-    const email = formData('email')
+    const email = formData.get('email')
     let regex = new RegExp("([!#-'*+/-9=?A-Z^-~-]+(\.[!#-'*+/-9=?A-Z^-~-]+)*|\"\(\[\]!#-[^-~ \t]|(\\[\t -~]))+\")@([!#-'*+/-9=?A-Z^-~-]+(\.[!#-'*+/-9=?A-Z^-~-]+)*|\[[\t -Z^-~]*])")
     //Se niega para determinar que si no se cumple esa condicion
     if(!regex.test(email)){
@@ -27,7 +29,13 @@ export async function action({request}){
         return errores
     }
 
-    return { ok: true };
+    await agregarCLiente(datos) 
+    Swal.fire('',
+              'Cliente agregado éxitosamente',
+              'success')
+
+
+    return redirect('/');
 }
 
 function NuevoCliente() {

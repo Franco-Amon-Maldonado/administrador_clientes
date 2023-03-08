@@ -1,14 +1,15 @@
-
 import { useLoaderData } from "react-router-dom";
 import Cliente from "../components/Cliente";
+import { obtenerClientes } from "../data/clientes";
 
 
 
 //Funcion similar a useEffect, el cual se va a ejecutar cuando el componente cargue. Es ideal para cargar un state o 
 //consultar una api. Siempre tiene que retornar algo
 export function loader(){
-    
-    return clientes
+  const clientes = obtenerClientes()
+  return clientes
+
 }
 
 
@@ -39,7 +40,7 @@ function Index() {
                         </tbody>
                 </table>
             ) : (
-                <p className="text-center mt10">No hay clientes aun</p>
+                <p className="flex justify-center items-center h-2/3 uppercase text-slate-500">No hay clientes aun</p>
             )}
         </>
      )
