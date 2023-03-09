@@ -17,7 +17,7 @@ function Layout() {
                 </nav>
             </aside>
 
-            <main className="md:w-4/5 p-10 md:h-screen bg-slate-200 overflow-scroll">
+            <main className="md:w-4/5 p-10 lg:h-screen bg-slate-200 xl:overflow-scroll">
                 <Outlet/>
             </main>
         </div>

@@ -1,5 +1,6 @@
 
 const Formulario = ({cliente}) => {
+    
     return (
         <>
             <div className="mb-4">
@@ -13,8 +14,11 @@ const Formulario = ({cliente}) => {
                     className="mt-2 block w-full p-3 rounded-md bg-gray-50 outline-none focus:border-2 focus:border-emerald-600"
                     placeholder="Nombre del Cliente"
                     name="nombre"
+                    //Se utiliza defaultValue para que el form no espere un "onChange", ya que no hay useState en esa parte
+                    defaultValue={cliente?.nombre}
                 />
             </div>
+            
             <div className="mb-4">
                 <label
                     className="text-gray-800"
@@ -26,6 +30,8 @@ const Formulario = ({cliente}) => {
                     className="mt-2 inline-block w-full p-3 rounded-md bg-gray-50 outline-none focus:border-2 focus:border-emerald-600"
                     placeholder="Empresa del Cliente"
                     name="empresa"
+                    defaultValue={cliente?.empresa}
+
                 />
             </div>
 
@@ -40,6 +46,7 @@ const Formulario = ({cliente}) => {
                     className="mt-2 block w-full p-3 rounded-md bg-gray-50 outline-none focus:border-2 focus:border-emerald-600"
                     placeholder="Email del Cliente"
                     name="email"
+                    defaultValue={cliente?.email}
                 />
             </div>
 
@@ -54,6 +61,7 @@ const Formulario = ({cliente}) => {
                     className="mt-2 block w-full p-3 rounded-md bg-gray-50 outline-none focus:border-2 focus:border-emerald-600"
                     placeholder="Teléfono del Cliente"
                     name="telefono"
+                    defaultValue={cliente?.telefono}
                 />
             </div>
 
