@@ -19,9 +19,33 @@ export async function editarCliente(id){
 export async function agregarCLiente(datos){
     try{
         const respuesta = await fetch(import.meta.env.VITE_API_URL,{
-            method: 'POST',
+            method: 'POST',//Para crear uno nuevo
             body:JSON.stringify(datos),
             headers: {'Content-Type': 'application/json'}
+        })
+        await respuesta.json
+    } catch(e){
+        console.log(error)
+    }
+}
+
+export async function actualizarCliente(id, datos){
+    try{
+        const respuesta = await fetch(`${import.meta.env.VITE_API_URL}/${id}`,{
+            method: 'PUT', //Para actualizar
+            body:JSON.stringify(datos),
+            headers: {'Content-Type': 'application/json'}
+        })
+        await respuesta.json
+    } catch(e){
+        console.log(error)
+    }
+}
+
+export async function eliminarCliente(id){
+    try{
+        const respuesta = await fetch(`${import.meta.env.VITE_API_URL}/${id}`,{
+            method: 'DELETE', //Para actualizar
         })
         await respuesta.json
     } catch(e){

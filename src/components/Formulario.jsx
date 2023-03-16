@@ -77,6 +77,7 @@ const Formulario = ({cliente}) => {
                     className="mt-2 block w-full p-3 rounded-md bg-gray-50 outline-none focus:border-2 focus:border-emerald-600 h-40 align-self"
                     placeholder="Notas del Cliente"
                     name="notas"
+                    defaultValue={cliente?.notas}
                 />
             </div>
         </>
